@@ -3,8 +3,8 @@ import App from './App.vue'
 import store from './components/vuex/store'
 import 'material-design-icons-iconfont'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-//import VueRouter from 'vue-router'
-//import router from './components/router/index'
+import VueRouter from 'vue-router'
+import router from './components/router/index'
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -15,12 +15,12 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
-//Vue.use(VueRouter)
+Vue.use(VueRouter)
 
 Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
   store,
-  //router
+  router
 }).$mount('#app')

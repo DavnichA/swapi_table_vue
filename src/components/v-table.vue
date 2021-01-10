@@ -96,6 +96,7 @@ import tableRow from './table-row'
         justify-content: space-around;
         border-top: 1px solid #cccc;
         border-bottom: 1px solid #cccc;
+        background-color: #f0c38e;
     }
     .table-header p {
         display: flex;
