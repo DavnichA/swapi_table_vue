@@ -1,15 +1,11 @@
 <template>
     <div class='table'>
         <div class='table-header'>
-            <p>Name</p>
-            <p class="sorted" @click="sortByBirth">Birth year <i class="material-icons">unfold_more</i></p>
-            <p class="sorted" @click="sortByGender">Gender <i class="material-icons">unfold_more</i></p>
-            <p class="sorted" @click="sortByHeight">Height <i class="material-icons">unfold_more</i></p>
-            <p>Mass</p>
-            <p>Hair color</p>
-            <p>Eye color</p>
-            <p>Amount films</p>
-            <p>Amount vehicles</p>
+            <p>Avatar</p>
+            <p class="sorted" @click="sortById">Id <i class="material-icons">unfold_more</i></p>
+            <p>First Name</p>
+            <p>Last Name</p>
+            <p>Email</p>
         </div>
         <div class='table-content'>
             <table-row 
@@ -18,7 +14,7 @@
                 :row_data="row"
             />
         </div>
-        <div class='pagination'>
+        <div class='vpagination'>
             <div class="page"  
                 v-for="page in pages" 
                 :key="page"
@@ -49,8 +45,9 @@ import tableRow from './table-row'
 
         data() {
             return {
-                usersPerPage: 5,
-                pageNumber: 1
+                usersPerPage: 6,
+                pageNumber: 1,
+                sortStatus: 0
             }
         },
 
@@ -69,17 +66,17 @@ import tableRow from './table-row'
             pageClick(page) {
                 this.pageNumber = page;
             },
-            sortByGender() {
-                this.users_data.sort((a,b) => a.gender.localeCompare(b.gender))
-            },
-            sortByHeight() {
-                this.users_data.sort((a,b) => a.height - b.height)
-            },
-            sortByBirth() {
-                this.users_data.sort((a,b) => (
-                    Number(a.birth_year.substring(0, a.birth_year.indexOf('BBY'))) - Number(b.birth_year.substring(0, b.birth_year.indexOf('BBY'))) ))
-
+            sortById() {
+                if (this.sortStatus === 0) {
+                    this.users_data.sort((a,b) => a.id - b.id);
+                    this.sortStatus = 1;
+                }
+                else {
+                    this.users_data.sort((a,b) => b.id - a.id);
+                    this.sortStatus = 0;
+                }
             }
+
         }
 
     }
@@ -108,11 +105,12 @@ import tableRow from './table-row'
         cursor: pointer;
     }
 
-    .pagination {
+    .vpagination {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         margin-top: 1vh;
+        padding-bottom: 2vh;
     }
 
     .page {

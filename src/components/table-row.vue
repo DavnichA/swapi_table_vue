@@ -1,14 +1,10 @@
 <template>
     <div class="table-row">
-        <div class="every-row row-name">{{row_data.name}}</div>
-        <div class="every-row row-birth">{{row_data.birth_year}}</div>
-        <div class="every-row row-gender">{{row_data.gender}}</div>
-        <div class="every-row row-height">{{row_data.height}}</div>
-        <div class="every-row row-mass">{{row_data.mass}}</div>
-        <div class="every-row row-hair">{{row_data.hair_color}}</div>
-        <div class="every-row row-eye">{{row_data.eye_color}}</div>
-        <div class="every-row row-films">{{row_data.films.length}}</div>
-        <div class="every-row row-vehicles">{{row_data.vehicles.length}}</div>
+        <div class="every-row row-img"><img :src="avatar" alt=""></div>
+        <div class="every-row row-id">{{row_data.id}}</div>
+        <div class="every-row row-first-name">{{row_data.first_name}}</div>
+        <div class="every-row row-last-name">{{row_data.last_name}}</div>
+        <div class="every-row row-email">{{row_data.email}}</div>      
     </div>
 </template>
 
@@ -24,13 +20,10 @@
                 }
             }
         },
-
         data() {
-            return {}
-        },
-
-        computed: {
-
+            return{
+                avatar: this.row_data.avatar
+            } 
         }
 
     }
@@ -40,14 +33,22 @@
     .table-row {
         display: flex;
         justify-content: space-around;
+        align-items: flex-end;
+        color: #fff;
     }
     .every-row {
         flex-basis: 11%;
         border-bottom: 1px solid #cccc;
         padding: 10px 0 10px 0;
+        flex-grow: 1;
+        
     }
     .table-row:hover {
         cursor: pointer;
         background-color: #cccc
+    }
+    .row-img img{
+        width: 100px;
+        height: 100px;
     }
 </style>

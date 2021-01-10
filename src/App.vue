@@ -1,39 +1,39 @@
 <template>
   <div id="app">
-    <v-input 
+    <!-- <v-input 
       :users_data = 'USERS'
-    />
-    <v-table
+    /> -->
+    <!-- <v-table
       :users_data = 'USERS'
-    />
-    <!-- <main-page/> -->
+    /> -->
+    <main-page/> 
   </div>
 </template>
 
 <script>
-import {mapActions, mapGetters} from 'vuex';
-import vTable from './components/v-table';
-import vInput from './components/v-input';
-//import mainPage from './components/main-page';
+//import {mapActions, mapGetters} from 'vuex';
+// import vTable from './components/v-table';
+// import vInput from './components/v-input';
+import mainPage from './components/main-page';
 
 export default {
   name: 'App',
   components: {
-    vTable,
-    vInput,
-    //mainPage
+    // vTable,
+    // vInput,
+    mainPage
   },
-  computed: {
-    ...mapGetters(['USERS'])
-  },
+  // computed: {
+  //   ...mapGetters(['USERS'])
+  // },
 
-  methods: {
-    ...mapActions(['GET_USERS'])
-  },
+  // methods: {
+  //   ...mapActions(['GET_USERS'])
+  // },
 
-  mounted() {
-    this.GET_USERS()
-  }
+  // mounted() {
+  //   this.GET_USERS()
+  // }
 }
 </script>
 
@@ -45,7 +45,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   padding-top: 10vh;
-  height: 100vh;
+  height: 100%;
   background-color: #312c51;
 }
 </style>
