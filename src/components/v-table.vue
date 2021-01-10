@@ -45,7 +45,7 @@ import tableRow from './table-row'
 
         data() {
             return {
-                usersPerPage: 6,
+                usersPerPage: 5,
                 pageNumber: 1,
                 sortStatus: 0
             }
@@ -53,7 +53,7 @@ import tableRow from './table-row'
 
         computed: {
             pages() {
-                return Math.ceil(this.users_data.length / 5);
+                return Math.ceil(this.users_data.length / this.usersPerPage);
             },
             paginetedUsers() {
                 const from = (this.pageNumber -1) * this.usersPerPage;
@@ -86,14 +86,17 @@ import tableRow from './table-row'
     .table {
         max-width: 95vw;
         margin: 0 auto ;
+        display: flex;
+        flex-direction: column;
     }
 
     .table-header {
         display: flex;
         justify-content: space-around;
-        border-top: 1px solid #cccc;
-        border-bottom: 1px solid #cccc;
-        background-color: #f0c38e;
+        border-top: 1px solid #c0392b;
+        border-bottom: 1px solid #c0392b;
+        background-color: #c0392b;
+        color: #fff;
     }
     .table-header p {
         display: flex;
@@ -116,18 +119,23 @@ import tableRow from './table-row'
     .page {
         padding: 2px 4px;
         margin-right: 5px;
-        border:1px solid black;
+        color: #1abc9c;
+        border:1px solid #1abc9c;
     }
 
     .page:hover {
         color: orange;
         cursor: pointer;
-        background-color: darkgray;
+        background-color:#16a085;
+        color: #fff;
+        border: 1px solid #16a085;
     }
 
     .page-selected {
         color: orange;
         cursor: pointer;
-        background-color: darkgray;
+        background-color:#16a085;
+        color: #fff;
+        border: 1px solid #16a085;
     }
 </style>

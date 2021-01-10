@@ -14,13 +14,21 @@ const store = new Vuex.Store({
                 method: 'GET'
             })
             .then((response) => {
-                commit('SET_USERS', response.data.data)
+                let pages = response.data.total_pages;
+                for (let i = 1; i <= pages; i++) {
+                    axios(`https://reqres.in/api/users/?page=${i}`, {method: 'GET'})
+                    .then((response) => {
+                        commit('SET_USERS', response.data.data)
+                        console.log('hi')
+                    })
+                }
+                
             })
         }
     },
     mutations: {
         SET_USERS: (state, users) => {
-            state.users = users
+            state.users = state.users.concat(users);
         }
 
     },
@@ -29,7 +37,7 @@ const store = new Vuex.Store({
             return state.users;
         },
         NAMES(state) {
-            return state.names
+            return state.names;
         }
     }
 

@@ -45,7 +45,7 @@
     }
     .table-row:hover {
         cursor: pointer;
-        background-color: #cccc
+        background-color: #16a085;
     }
     .row-img img{
         width: 100px;
