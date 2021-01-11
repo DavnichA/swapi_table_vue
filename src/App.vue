@@ -10,7 +10,7 @@ import {mapActions} from 'vuex';
 export default {
   name: 'App',
   methods: {
-    ...mapActions(['GET_USERS', 'GET_USERS_DATA'])
+    ...mapActions(['GET_USERS'])
   },
 
   mounted() {

@@ -3,10 +3,9 @@
       <p @click="$router.push({name: 'home'})">Home</p>
       <div class="profile_ava"><img :src="avatar" alt=""></div>
       <div class="info-user">
-        <div class="">{{usdt.id}}</div>
-        <div class="">{{usdt.email}}</div>
-        <div class="">{{usdt.first_name}}</div>
-        <div class="">{{usdt.last_name}}</div>
+        <div class="personName"><h2>{{usdt.first_name}} {{usdt.last_name}}</h2></div>
+        <div class="personId">Person Id: {{usdt.id}}</div>
+        <div class="personEmail">Email: {{usdt.email}}</div>
       </div>
   </div>
 </template>
@@ -40,7 +39,7 @@ export default {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #000;
+    background-color: #2d3436;
     position: absolute;
     height: 100%;
     width: 100%;
@@ -53,8 +52,25 @@ export default {
     top: 1em;
     left: 1em;
     cursor: pointer;
+    font-weight: bold;
+  }
+  .users p:hover {
+    color: #1abc9c;
   }
   .profile_ava img {
     width: 20vw;
+    border-radius: 50%;
+  }
+  .info-user {
+    padding-right: 35%;
+    padding-bottom: 12%;
+  }
+  .personId, .personEmail {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  .personName h2 {
+    color: #1abc9c;
   }
 </style>

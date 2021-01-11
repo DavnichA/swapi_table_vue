@@ -8,7 +8,7 @@ const store = new Vuex.Store({
     state: {
         users: [],
         userData: {},
-        id: 2
+        id: 0
     },
     actions: {
         GET_USERS({commit}) {

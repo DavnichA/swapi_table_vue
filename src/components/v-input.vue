@@ -1,6 +1,6 @@
 <template>
   <div class="search">
-   <b-form-input list="my-list-id"></b-form-input>
+   <b-form-input list="my-list-id" v-model="value"></b-form-input>
     <datalist id="my-list-id">
       <option v-for="size in sizes" :key="size">{{ size }}</option>
     </datalist>
@@ -9,25 +9,27 @@
 </template>
 
 <script>
-
+import {mapGetters} from 'vuex';
 
 export default {
   name: 'v-input',
-  components: {
-    
-  },
-  computed: {
-    
-  },
-
-  methods: {
-    
-  },
-  data() {
+    data() {
       return {
         sizes: ['Small', 'Medium', 'Large', 'Extra Large'],
-        name: ''
+        name: '',
+        value: ''
       }
+    },
+
+  computed: {
+    ...mapGetters(['USERS']),
+    
+    filteredUsers() {
+      return this.$store.getters.USERS.first_name.filter(item => {
+        item.title.indexOf(this.value) !== -1
+      })
+
+    }
   }
 
 }
