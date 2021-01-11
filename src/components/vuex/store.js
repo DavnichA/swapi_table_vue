@@ -6,7 +6,9 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        users: []
+        users: [],
+        userData: {},
+        id: 2
     },
     actions: {
         GET_USERS({commit}) {
@@ -19,16 +21,34 @@ const store = new Vuex.Store({
                     axios(`https://reqres.in/api/users/?page=${i}`, {method: 'GET'})
                     .then((response) => {
                         commit('SET_USERS', response.data.data)
-                        console.log('hi')
                     })
                 }
                 
             })
+        },
+
+        GET_USERS_DATA({commit}) {
+            return axios(`https://reqres.in/api/users/${this.state.id}`, {method: 'GET'})
+            .then((response) => {
+                commit('SET_US_DATA', response.data.data)
+            })
+        },
+
+        GET_ID({commit}, id) {
+            commit('SET_ID', id),
+            store.dispatch('GET_USERS_DATA')
         }
+
     },
     mutations: {
         SET_USERS: (state, users) => {
             state.users = state.users.concat(users);
+        },
+        SET_US_DATA: (state, user) => {
+            state.userData = user
+        },
+        SET_ID: (state, id) => {
+            state.id = id
         }
 
     },
@@ -36,8 +56,8 @@ const store = new Vuex.Store({
         USERS(state) {
             return state.users;
         },
-        NAMES(state) {
-            return state.names;
+        USERDATA(state) {
+            return state.userData
         }
     }
 

@@ -6,27 +6,20 @@
 </template>
 
 <script>
- import {mapActions, mapGetters} from 'vuex';
+ import {mapGetters} from 'vuex';
  import vTable from './v-table';
-import vInput from './v-input';
+ import vInput from './v-input';
 
 export default {
   name: 'main-page',
   components: {
     vTable,
-    vInput
+    vInput,
+
   },
   computed: {
-    ...mapGetters(['USERS'])
+    ...mapGetters(['USERS', 'USERDATA'])
   },
-
-  methods: {
-    ...mapActions(['GET_USERS'])
-  },
-
-  mounted() {
-    this.GET_USERS()
-  }
   
 }
 </script>

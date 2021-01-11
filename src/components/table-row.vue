@@ -1,14 +1,21 @@
 <template>
     <div class="table-row">
-        <div class="every-row row-img"><img :src="avatar" alt=""></div>
-        <div class="every-row row-id">{{row_data.id}}</div>
-        <div class="every-row row-first-name">{{row_data.first_name}}</div>
-        <div class="every-row row-last-name">{{row_data.last_name}}</div>
-        <div class="every-row row-email">{{row_data.email}}</div>      
+        <router-link 
+            :to="{ name: 'users', params: {id: row_data.id}}"
+            class="s_users"
+            >
+                <div class="every-row row-img"><img :src="avatar" alt=""></div>
+                <div class="every-row row-id">{{row_data.id}}</div>
+                <div class="every-row row-first-name">{{row_data.first_name}}</div>
+                <div class="every-row row-last-name">{{row_data.last_name}}</div>
+                <div class="every-row row-email">{{row_data.email}}</div>
+            </router-link>
+
     </div>
 </template>
 
 <script>
+import {mapActions} from 'vuex';
     export default {
         name: 'table-row',
 
@@ -22,15 +29,22 @@
         },
         data() {
             return{
-                avatar: this.row_data.avatar
+                avatar: this.row_data.avatar,
+                id: this.$route.params.id
             } 
-        }
+        },
+
+        methods: {
+            ...mapActions({
+                add: 'GET_USERS_DATA'
+            }) 
+        },
 
     }
 </script>
 
 <style>
-    .table-row {
+    .s_users {
         display: flex;
         justify-content: space-around;
         align-items: flex-end;

@@ -1,17 +1,21 @@
 <template>
   <div id="app">
-    <main-page/> 
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import mainPage from './components/main-page';
+import {mapActions} from 'vuex';
 
 export default {
   name: 'App',
-  components: {
-    mainPage
+  methods: {
+    ...mapActions(['GET_USERS', 'GET_USERS_DATA'])
   },
+
+  mounted() {
+    this.GET_USERS()
+  }
 }
 </script>
 

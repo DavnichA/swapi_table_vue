@@ -42,5 +42,12 @@ export default {
     }
     .btn-info {
         height: 2.5rem;
+        background-color: #1abc9c !important;
+        border-color: #1abc9c !important;
+    }
+
+    .btn-info:hover {
+        background-color: #16a085 !important;
+        border-color: #16a085 !important;
     }
 </style>

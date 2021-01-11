@@ -1,11 +1,21 @@
 import VueRouter from 'vue-router';
-import App from '../../App';
+import MainPage from '../main-page';
+import Profile from '../profile';
 
 export default new VueRouter({
-    router: [
+    mode:'history',
+    routes: [
         {
             path: '/',
-            component: App
+            name: 'home',
+            component: MainPage
+        },
+        {
+            path: '/user/:id',
+            name: "users",
+            component: Profile
         }
+
     ]
 })
+
